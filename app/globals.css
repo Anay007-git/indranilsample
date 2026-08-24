@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme='dark'] {
+  --background: #0D0C0B;
+  --foreground: #F3EFE6;
+  
+  --surface: #131210;
+  --border-ink: #221F1B;
+  --border-ink-light: #2E2A24;
+  
+  --text-primary: #F3EFE6;
+  --text-muted: #9C9488;
+  --text-subtle: #5A544C;
+  
+  --accent-brass: #C6A15B;
+  --accent-brass-hover: #D9B46E;
+  --accent-sage: #8A9A87;
+  --accent-sage-muted: rgba(138, 154, 135, 0.16);
+  --accent-sage-border: rgba(138, 154, 135, 0.3);
+  
+  --glass-bg: rgba(13, 12, 11, 0.84);
+  --glass-border: rgba(34, 31, 27, 0.8);
+  --dossier-dot: rgba(198, 161, 91, 0.045);
+}
+
+[data-theme='light'] {
+  --background: #F8F6F0;
+  --foreground: #1A1815;
+  
+  --surface: #FFFFFF;
+  --border-ink: #E4DFD5;
+  --border-ink-light: #D5CFC3;
+  
+  --text-primary: #1A1815;
+  --text-muted: #6D675E;
+  --text-subtle: #968F84;
+  
+  --accent-brass: #B58838;
+  --accent-brass-hover: #9E7429;
+  --accent-sage: #526B50;
+  --accent-sage-muted: rgba(82, 107, 80, 0.12);
+  --accent-sage-border: rgba(82, 107, 80, 0.28);
+  
+  --glass-bg: rgba(248, 246, 240, 0.88);
+  --glass-border: rgba(228, 223, 213, 0.85);
+  --dossier-dot: rgba(181, 136, 56, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--background);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-inter), sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Text Selection */
+::selection {
+  background-color: var(--accent-brass);
+  color: #0D0C0B;
+}
+
+/* Custom Editorial Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-ink);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-brass);
+}
+
+/* Focus Visible */
+:focus-visible {
+  outline: 2px solid var(--accent-brass);
+  outline-offset: 3px;
+}
+
+/* Subtle Film Grain Noise / Ambient Dossier Feel */
+.dossier-grid-bg {
+  background-image: radial-gradient(var(--dossier-dot) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Brass Glow Effects */
+.glow-brass {
+  box-shadow: 0 0 40px -10px rgba(198, 161, 91, 0.25);
+}
+
+.glow-brass-sm {
+  box-shadow: 0 0 20px -5px rgba(198, 161, 91, 0.2);
+}
+
+/* Glassmorphism Sticky Bar */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: var(--glass-border);
+}
+
+/* Rotating Seal Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+/* Sci-Fi Laser Scan Animation */
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Radar Sweep */
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shimmer Luxury Keyframes */
+@keyframes shimmer-luxury {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.shimmer-brass {
+  background: linear-gradient(90deg, #C6A15B 0%, #FFF1C5 35%, #C6A15B 70%, #E3C27E 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-luxury 6s ease-in-out infinite;
+}
+
+[data-theme='light'] .shimmer-brass {
+  background: linear-gradient(90deg, #9C7025 0%, #D4A346 35%, #9C7025 70%, #805B1E 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-luxury 6s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
