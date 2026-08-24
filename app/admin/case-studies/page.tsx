@@ -702,10 +702,16 @@ export default function AdminCaseStudiesPage() {
         </div>
       )}
 
-      {/* Create / Edit Form Modal / Drawer with Fixed Size */}
+      {/* Create / Edit Form Modal / Drawer with Fixed Size & Unlocked Scroll */}
       {isFormOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-ink/85 backdrop-blur-md">
-          <div className="relative w-full max-w-4xl h-[90vh] max-h-[860px] bg-ink-surface border border-ink-border rounded-card shadow-editorial flex flex-col overflow-hidden animate-fadeIn">
+        <div
+          data-lenis-prevent="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-ink/85 backdrop-blur-md"
+        >
+          <div
+            data-lenis-prevent="true"
+            className="relative w-full max-w-4xl h-[90vh] max-h-[860px] bg-ink-surface border border-ink-border rounded-card shadow-editorial flex flex-col overflow-hidden animate-fadeIn"
+          >
             {/* Fixed Sticky Modal Header */}
             <div className="px-6 py-4 sm:py-5 border-b border-ink-border bg-ink-surface flex items-center justify-between flex-shrink-0 z-10">
               <div>
@@ -728,8 +734,14 @@ export default function AdminCaseStudiesPage() {
               </button>
             </div>
 
-            {/* Scrollable Form Body */}
-            <form id="dossier-form" onSubmit={handleSubmitForm} className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6">
+            {/* Scrollable Form Body with Lenis scroll unlocking */}
+            <form
+              id="dossier-form"
+              data-lenis-prevent="true"
+              onWheel={(e) => e.stopPropagation()}
+              onSubmit={handleSubmitForm}
+              className="flex-1 overflow-y-auto overscroll-contain p-6 sm:p-8 space-y-6"
+            >
               {/* Row 1: Name & Slug */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
